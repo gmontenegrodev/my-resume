@@ -4,37 +4,40 @@ Project instructions for Claude Code. Every agent reads this file first. Replace
 
 ## Project
 
-- **Name:** [project name]
-- **What it is:** [one or two sentences]
-- **Who it's for:** [the users or visitors]
-- **Status:** [new / in progress / live]
+- **Name:** my-resume
+- **What it is:** A one-page personal portfolio and resume site that shows my experience, projects and skills, with a downloadable PDF CV.
+- **Who it's for:** Recruiters and hiring managers.
+- **Status:** new (planning done, waiting for CV content)
 
 ## Stack
 
-- **Frontend:** [Next.js 16, React 19, TypeScript, Tailwind CSS]
-- **Backend:** [Python, FastAPI, SQLAlchemy, PostgreSQL, or "none"]
-- **Hosting:** [Vercel, Railway, other]
-- **Package managers:** [pnpm or npm for frontend, uv for backend]
-
-If this project has no backend, say so here so the backend agent is not used.
+- **Frontend:** Next.js 16 (App Router, static export), React 19, TypeScript, Tailwind CSS
+- **Backend:** none. This project has no backend, so do not use the `backend` agent.
+- **Hosting:** Google Cloud: Firebase Hosting (serves the static `out/` folder)
+- **Package managers:** npm
 
 ## Commands
 
-| Task | Frontend | Backend |
-|---|---|---|
-| Install | `[npm install]` | `[uv sync]` |
-| Run locally | `[npm run dev]` | `[uv run fastapi dev app/main.py]` |
-| Tests | `[npm test]` | `[uv run pytest]` |
-| Lint | `[npm run lint]` | `[uv run ruff check .]` |
-| Type check | `[npx tsc --noEmit]` | `[uv run mypy .]` |
+| Task | Command |
+|---|---|
+| Install | `npm install` |
+| Run locally | `npm run dev` |
+| Build (static export to `out/`) | `npm run build` |
+| Tests | `npm test` (if tests are added) |
+| Lint | `npm run lint` |
+| Type check | `npx tsc --noEmit` |
+| Deploy | `firebase deploy --only hosting` |
 
 ## Folder structure
 
 ```
-[frontend/   Next.js app]
-[backend/    FastAPI app]
-PLAN.md      what we are building and the API contract
-CLAUDE.md    this file
+src/app/              pages, layout, metadata, sitemap, robots
+src/components/       section and UI components
+src/content/resume.ts all resume text (the only file to edit for content)
+public/               resume.pdf, images, favicon
+firebase.json         Firebase Hosting config
+PLAN.md               what we are building
+CLAUDE.md             this file
 ```
 
 ## How we work
@@ -59,43 +62,45 @@ Suggested order for a feature: plan in PLAN.md, then backend and frontend build,
 
 ## Conventions
 
-- [Branch names, commit message style, or other team rules]
-- [Anything Claude should always or never do in this project]
+- Static export only: no API routes, server actions, middleware, or features that need a Node server at runtime.
+- Never hardcode resume text in components; read it from `src/content/resume.ts`.
+- External links open in a new tab with `rel="noopener noreferrer"`.
+- Commit messages: short imperative summary line (e.g. "Add projects section").
 
 ## Brand
 
 Used by the `design` skill. Fill this in before any UI work.
 
-**Business:** [what the company does, in one sentence]
-**Audience:** [who the site is for]
-**Page goal:** [the single action a visitor should take]
+**Business:** Personal portfolio of a software and AI engineer.
+**Audience:** Recruiters and hiring managers.
+**Page goal:** Contact me (by email, LinkedIn or GitHub).
 
 ### Colors
-- Primary (buttons, links): #______
-- Background: #______
-- Surface (cards, alternate sections): #______
-- Text: #______
-- Muted text: #______
-- Border: #______
-- Accent or secondary (optional): #______
+- Primary (buttons, links): #2563EB
+- Background: #FFFFFF
+- Surface (cards, alternate sections): #F8FAFC
+- Text: #0F172A
+- Muted text: #475569
+- Border: #E2E8F0
+- Accent or secondary (optional): none
 
 ### Typography
-- Heading font: [name, source]
-- Body font: [name, source]
+- Heading font: Inter (Google Fonts, loaded with `next/font/google`)
+- Body font: Inter (Google Fonts, loaded with `next/font/google`)
 
 ### Style
-- Overall feel: [three adjectives, e.g. clean, bold, friendly]
-- Corners: [sharp / slightly rounded / very rounded]
-- Imagery: [photos of real work / illustrations / product screenshots]
-- Reference sites we like: [URLs and what we like about each]
-- Things to avoid: [e.g. stock photos, gradients, dark mode]
+- Overall feel: clean, minimal, professional
+- Corners: slightly rounded
+- Imagery: optional profile photo and real project screenshots
+- Reference sites we like: to be provided
+- Things to avoid: dark mode, gradients, stock photos, skill progress bars or percentages, heavy animations
 
 ### Voice
-- Tone: [e.g. direct and practical, no jargon]
-- We say: [preferred words and phrases]
-- We don't say: [words to avoid]
+- Tone: direct and practical, first person, no jargon
+- We say: concrete results with numbers ("cut load time by 40%")
+- We don't say: buzzwords like "passionate", "rockstar", "ninja", "guru"
 
 ### Assets
-- Logo: [path in the repo]
-- Favicon: [path]
-- Photos: [path or "to be provided"]
+- Logo: none (name in text)
+- Favicon: `src/app/icon.png` (to be created)
+- Photos: to be provided (`public/images/profile.jpg`, optional)
