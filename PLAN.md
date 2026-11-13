@@ -137,11 +137,11 @@ Ordered list of work. Mark items done as you go.
 - 2026-11-13 Contact by links only (email, LinkedIn, GitHub), so there is no form service to set up or protect from spam.
 - 2026-11-13 Content comes from my real CV, which I will paste in chat.
 - 2026-11-13 Clean and minimal visual style, light theme only.
+- 2026-11-13 Jazwares Lead React Developer ended in 2025 (2019 – 2025). NextEra Energy role is shown without dates, by choice.
 - 2026-11-13 Phone number is not shown on the site; email and LinkedIn are, because the CV already makes them public.
 - 2026-11-13 Next.js app at the repo root (no `frontend/` folder), because there is no backend.
 
 **Open**
-- NextEra Energy role: what are the dates? The CV lists Jazwares as "2019 – Present" too. Are both current, or did Jazwares end?
 - GitHub profile URL (the plan has a GitHub button, but the CV has no GitHub link).
 - The phone number is left off the site on purpose (public pages get scraped for spam). Should the downloadable PDF on the site also drop the phone number?
 - Any other projects to show besides BallGameAI? Is there a public link or screenshot for BallGameAI?

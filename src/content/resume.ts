@@ -116,7 +116,7 @@ export const resume: Resume = {
       role: "Lead AI Engineering Tooling & Adoption",
       company: "NextEra Energy, Inc.",
       companyUrl: "https://www.nexteraenergy.com",
-      // TODO: dates are missing in the CV, e.g. "2025 – Present".
+      // No dates shown for this role, by choice.
       period: "",
       highlights: [
         "Lead adoption and enablement of AI-powered engineering tools across development teams, including GitHub Copilot, Claude Code, Windsurf, and emerging AI agents.",
@@ -131,7 +131,7 @@ export const resume: Resume = {
       role: "Lead React Developer",
       company: "Jazwares LLC",
       companyUrl: "https://www.jazwares.com",
-      period: "2019 – Present",
+      period: "2019 – 2025",
       highlights: [
         "Lead full-stack initiatives across React, TypeScript, APIs, and AWS; shape application architecture for scalable, production-grade customer-facing experiences.",
         "Own technical planning across frontend architecture, API integration, cloud services, performance, accessibility, and production delivery.",
