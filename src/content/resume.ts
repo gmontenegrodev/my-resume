@@ -39,6 +39,8 @@ export type Resume = {
   location: string;
   availability: string;
   email: string;
+  /** Path to the downloadable CV in public/, e.g. "/resume.pdf". Leave undefined to hide the button. */
+  resumePdf?: string;
   links: { linkedin: string; github?: string };
   about: string[];
   skills: SkillGroup[];
@@ -57,6 +59,8 @@ export const resume: Resume = {
   location: "Sunrise, FL",
   availability: "Open to engineering leadership and applied AI roles",
   email: "gmontenegro500@gmail.com",
+  // TODO: add public/resume.pdf, then set this to "/resume.pdf".
+  resumePdf: undefined,
   links: {
     linkedin: "https://www.linkedin.com/in/german-montenegro-engineer",
     // TODO: add GitHub profile URL, or remove this line to hide the link.

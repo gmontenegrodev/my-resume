@@ -114,13 +114,14 @@ Ordered list of work. Mark items done as you go.
 - [x] Plan the site and fill in PLAN.md and CLAUDE.md (main session)
 - [x] Paste the CV; convert it into `src/content/resume.ts` content (main session)
 - [ ] Review `src/content/resume.ts` and fill in its TODOs (me)
-- [ ] Scaffold Next.js 16 + React 19 + TypeScript + Tailwind at the repo root; set up static export (`output: "export"`, `images.unoptimized: true`, `trailingSlash` as needed for Firebase); ESLint; add scripts for lint and type check (frontend / Frank)
-- [ ] Build the layout: fonts with `next/font`, colors from the Brand section as Tailwind theme tokens, sticky header with skip link, footer (frontend / Frank)
-- [ ] Build the sections from section 3, all reading from `src/content/resume.ts` (frontend / Frank)
-- [ ] Build the 404 page (frontend / Frank)
-- [ ] SEO: metadata, Open Graph image, JSON-LD `Person`, `sitemap.ts` and `robots.ts` (static), favicon (frontend / Frank)
+- [x] Scaffold Next.js 16 + React 19 + TypeScript + Tailwind at the repo root; set up static export (`output: "export"`, `images.unoptimized: true`, `trailingSlash` as needed for Firebase); ESLint; add scripts for lint and type check (frontend / Frank)
+- [x] Build the layout: fonts with `next/font`, colors from the Brand section as Tailwind theme tokens, sticky header with skip link, footer (frontend / Frank)
+- [x] Build the sections from section 3, all reading from `src/content/resume.ts` (frontend / Frank)
+- [x] Build the 404 page (frontend / Frank)
+- [x] SEO: metadata, Open Graph image, JSON-LD `Person`, `sitemap.ts` and `robots.ts` (static), favicon (frontend / Frank)
 - [ ] Add `public/resume.pdf` (me, then frontend links it)
-- [ ] Add `firebase.json`, `.firebaserc` and `.env.example`; document the deploy steps in README (frontend / Frank)
+- [x] Add `firebase.json` and `.env.example`; document the deploy steps in README (main session)
+- [ ] Create `.firebaserc` with `firebase use --add` (me, needs my Firebase project)
 - [ ] Code review (reviewer / Rita)
 - [ ] Security audit: dependencies, no secrets, safe external links (`rel="noopener noreferrer"`), security headers in `firebase.json` (security / Sam)
 - [ ] SEO review (seo / Peter)
@@ -139,14 +140,15 @@ Ordered list of work. Mark items done as you go.
 - 2026-11-13 Clean and minimal visual style, light theme only.
 - 2026-11-13 Jazwares Lead React Developer ended in 2025 (2019 – 2025). NextEra Energy role is shown without dates, by choice.
 - 2026-11-13 Phone number is not shown on the site; email and LinkedIn are, because the CV already makes them public.
+- 2026-11-13 Custom domain is germanresume.com (currently the old site). Build and test the new site first; switch DNS to Firebase later.
+- 2026-11-13 The "Download resume" and GitHub buttons stay hidden until `resumePdf` and `links.github` are set in `src/content/resume.ts`.
 - 2026-11-13 Next.js app at the repo root (no `frontend/` folder), because there is no backend.
 
 **Open**
 - GitHub profile URL (the plan has a GitHub button, but the CV has no GitHub link).
 - The phone number is left off the site on purpose (public pages get scraped for spam). Should the downloadable PDF on the site also drop the phone number?
 - Any other projects to show besides BallGameAI? Is there a public link or screenshot for BallGameAI?
-- Do you want a custom domain (e.g. `yourname.dev`), or is the free `<project-id>.web.app` address fine for now?
 - Do you want a profile photo in the hero? If yes, add it as `public/images/profile.jpg`.
 - Do you want privacy-friendly analytics later (for example Firebase/Google Analytics), knowing that some regions then require a cookie notice?
 - Do you want automatic deploys from GitHub (a GitHub Action that runs on push to `main`), or manual `firebase deploy` for now?
-- What is your Firebase project ID? (Needed for `.firebaserc`; it is not a secret.)
+- What is your Firebase project ID? (Needed for `.firebaserc`; it is not a secret. You can also run `firebase use --add` yourself.)

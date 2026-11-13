@@ -22,3 +22,13 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+
+# Next.js / TypeScript generated
+next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+/coverage
+
+# Firebase
+.firebase/
+firebase-debug.log*

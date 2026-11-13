@@ -23,16 +23,17 @@ Project instructions for Claude Code. Every agent reads this file first. Replace
 | Install | `npm install` |
 | Run locally | `npm run dev` |
 | Build (static export to `out/`) | `npm run build` |
-| Tests | `npm test` (if tests are added) |
+| Preview built site | `npm start` |
 | Lint | `npm run lint` |
-| Type check | `npx tsc --noEmit` |
-| Deploy | `firebase deploy --only hosting` |
+| Type check | `npm run typecheck` (run `npm run build` once first, so Next.js generates its route types) |
+| Deploy | `npm run deploy` (builds, then `firebase deploy --only hosting`) |
 
 ## Folder structure
 
 ```
 src/app/              pages, layout, metadata, sitemap, robots
-src/components/       section and UI components
+src/components/       sections/ (page sections) and ui/ (buttons, tags, icons)
+src/lib/site.ts       public site URL
 src/content/resume.ts all resume text (the only file to edit for content)
 public/               resume.pdf, images, favicon
 firebase.json         Firebase Hosting config
