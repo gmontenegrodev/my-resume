@@ -71,8 +71,8 @@ Suggested order for a feature: plan in PLAN.md, then backend and frontend build,
 
 Used by the `design` skill. Fill this in before any UI work.
 
-**Business:** Personal portfolio of a software and AI engineer.
-**Audience:** Recruiters and hiring managers.
+**Business:** Personal portfolio of an engineering and applied AI leader focused on AI adoption and baseball decision systems.
+**Audience:** Recruiters and hiring managers in tech, applied AI, and baseball operations.
 **Page goal:** Contact me (by email, LinkedIn or GitHub).
 
 ### Colors

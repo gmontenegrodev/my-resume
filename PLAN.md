@@ -43,7 +43,7 @@ What we are building. The frontend and reviewer agents treat this file as the so
 | Hero | Answers "who is this and what do they do?" in under 10 seconds | Full name (H1), job title (e.g. "Software & AI Engineer"), a one-sentence value line, location and availability (e.g. "Open to remote roles"), optional photo | Primary button "Contact me" goes to `#contact`; secondary button "Download resume" goes to `/resume.pdf` |
 | About | Short personal summary | 2 or 3 short paragraphs: what I do, what I'm good at, what I'm looking for | none |
 | Experience | Show career history and results | One entry per job, newest first: role, company (with link), dates, location or remote, 2 to 4 bullet points focused on results (numbers where possible), tech tags | none |
-| Projects | Show real work | 3 to 6 cards: title, one or two sentence description, my role, tech tags, links to "Code" (GitHub) and "Live demo" when available, optional screenshot | Each card links out (opens in a new tab) |
+| Projects | Show real work | Featured project BallGameAI (status, role, description, highlights, tech) first; more cards later if I add them. Each card: title, one or two sentence description, my role, tech tags, links to "Code" (GitHub) and "Live demo" when available, optional screenshot | Each card links out (opens in a new tab) |
 | Skills | Let recruiters scan for keywords | Skills grouped, e.g. Languages, Frontend, Backend, AI / ML, Cloud & DevOps, Tools. Plain text tags, no progress bars or percentages | none |
 | Education & certifications | Formal background | Degree, school, years; certifications with issuer and year | none |
 | Contact | Turn interest into a conversation | Short line (e.g. "I'm open to new roles. The fastest way to reach me is email."), then buttons: Email, LinkedIn, GitHub | "Email me" button (`mailto:`) |
@@ -84,7 +84,7 @@ export const resume = {
 };
 ```
 
-**Status:** waiting for the CV. I will paste it in chat, and it gets converted into this file.
+**Status:** first draft created from the CV PDF (2026-11-13). Waiting for my review and the open items marked `TODO` in the file.
 
 ## 4. API contract
 
@@ -112,7 +112,8 @@ Nothing is stored. All content is static and lives in `src/content/resume.ts`.
 Ordered list of work. Mark items done as you go.
 
 - [x] Plan the site and fill in PLAN.md and CLAUDE.md (main session)
-- [ ] Paste the CV; convert it into `src/content/resume.ts` content (main session, with my review)
+- [x] Paste the CV; convert it into `src/content/resume.ts` content (main session)
+- [ ] Review `src/content/resume.ts` and fill in its TODOs (me)
 - [ ] Scaffold Next.js 16 + React 19 + TypeScript + Tailwind at the repo root; set up static export (`output: "export"`, `images.unoptimized: true`, `trailingSlash` as needed for Firebase); ESLint; add scripts for lint and type check (frontend / Frank)
 - [ ] Build the layout: fonts with `next/font`, colors from the Brand section as Tailwind theme tokens, sticky header with skip link, footer (frontend / Frank)
 - [ ] Build the sections from section 3, all reading from `src/content/resume.ts` (frontend / Frank)
@@ -136,9 +137,14 @@ Ordered list of work. Mark items done as you go.
 - 2026-11-13 Contact by links only (email, LinkedIn, GitHub), so there is no form service to set up or protect from spam.
 - 2026-11-13 Content comes from my real CV, which I will paste in chat.
 - 2026-11-13 Clean and minimal visual style, light theme only.
+- 2026-11-13 Phone number is not shown on the site; email and LinkedIn are, because the CV already makes them public.
 - 2026-11-13 Next.js app at the repo root (no `frontend/` folder), because there is no backend.
 
 **Open**
+- NextEra Energy role: what are the dates? The CV lists Jazwares as "2019 – Present" too. Are both current, or did Jazwares end?
+- GitHub profile URL (the plan has a GitHub button, but the CV has no GitHub link).
+- The phone number is left off the site on purpose (public pages get scraped for spam). Should the downloadable PDF on the site also drop the phone number?
+- Any other projects to show besides BallGameAI? Is there a public link or screenshot for BallGameAI?
 - Do you want a custom domain (e.g. `yourname.dev`), or is the free `<project-id>.web.app` address fine for now?
 - Do you want a profile photo in the hero? If yes, add it as `public/images/profile.jpg`.
 - Do you want privacy-friendly analytics later (for example Firebase/Google Analytics), knowing that some regions then require a cookie notice?
