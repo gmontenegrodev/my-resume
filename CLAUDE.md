@@ -7,7 +7,7 @@ Project instructions for Claude Code. Every agent reads this file first. Replace
 - **Name:** my-resume
 - **What it is:** A one-page personal portfolio and resume site that shows my experience, projects and skills, with a downloadable PDF CV.
 - **Who it's for:** Recruiters and hiring managers.
-- **Status:** new (planning done, waiting for CV content)
+- **Status:** in progress (site built, not deployed yet)
 
 ## Stack
 
@@ -103,5 +103,5 @@ Used by the `design` skill. Fill this in before any UI work.
 
 ### Assets
 - Logo: none (name in text)
-- Favicon: `src/app/icon.png` (to be created)
+- Favicon: `src/app/icon.svg` ("GM" monogram)
 - Photos: to be provided (`public/images/profile.jpg`, optional)
