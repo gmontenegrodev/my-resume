@@ -203,7 +203,11 @@ export const resume: Resume = {
         "MLB data ingestion and backend workflows covering players, teams, rosters, performance, matchups, and live-game context.",
       ],
       tech: ["Python", "FastAPI", "PostgreSQL", "REST APIs", "LLMs"],
-      // TODO: add image (required for every project), and codeUrl / demoUrl if public.
+      demoUrl: "https://www.ballgameai.com",
+      image: {
+        src: "/images/projects/ballgameai.webp",
+        alt: "BallGameAI homepage with the headline \"See the game before it happens.\" next to an illustration of a baseball and a pitch path over home plate",
+      },
     },
   ],
 

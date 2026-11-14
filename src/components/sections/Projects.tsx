@@ -69,7 +69,7 @@ export function Projects() {
                     {project.demoUrl && (
                       <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
                         <ExternalIcon />
-                        Live demo<span className="sr-only"> of {project.title} (opens in a new tab)</span>
+                        Visit website<span className="sr-only"> of {project.title} (opens in a new tab)</span>
                       </a>
                     )}
                     {project.codeUrl && (
