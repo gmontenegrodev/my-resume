@@ -58,7 +58,7 @@ export type Resume = {
 
 export const resume: Resume = {
   name: "German Montenegro",
-  title: "Engineering & Applied AI Leader",
+  title: "Software Engineering & Applied AI Leader",
   focus: "From questions to working products",
   tagline:
     "I build production software and help engineering teams adopt AI responsibly, with people still making the final decisions.",

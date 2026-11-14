@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 const title = `${resume.name} | ${resume.title}`;
-const description = `${resume.name}, ${resume.title.toLowerCase()} with 10+ years building production software, cloud platforms and AI-assisted engineering workflows. Founder of BallGameAI, a baseball decision-intelligence platform.`;
+const description = `${resume.name}, ${resume.title} with 10+ years building production software, cloud platforms and AI-assisted engineering workflows. Founder of BallGameAI, a baseball decision-intelligence platform.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
