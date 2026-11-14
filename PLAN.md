@@ -135,6 +135,8 @@ Ordered list of work. Mark items done as you go.
 - [ ] Security audit: dependencies, no secrets, safe external links (`rel="noopener noreferrer"`), security headers in `firebase.json` (security / Sam)
 - [ ] SEO review (seo / Peter)
 - [ ] Fix the review findings (frontend / Frank)
+- [x] GitHub Action: checks on every PR, deploy to Firebase Hosting on every push to `main` (main session)
+- [ ] One-time setup: service account secret `FIREBASE_SERVICE_ACCOUNT` and variable `FIREBASE_PROJECT_ID` in GitHub (me)
 - [ ] First deploy: `npm run build` then `firebase deploy --only hosting` (me, with help from the main session)
 
 ## 8. Decisions and open questions
@@ -151,6 +153,7 @@ Ordered list of work. Mark items done as you go.
 - 2026-11-13 Phone number is not shown on the site; email and LinkedIn are, because the CV already makes them public.
 - 2026-11-13 Custom domain is germanresume.com (currently the old site). Build and test the new site first; switch DNS to Firebase later.
 - 2026-11-13 The "Download resume" and GitHub buttons stay hidden until `resumePdf` and `links.github` are set in `src/content/resume.ts`.
+- 2026-11-14 Deploy automatically with GitHub Actions on every push to `main` (same setup as my other project). Pull requests run lint, type check, and build only.
 - 2026-11-14 Add a short privacy page; no cookie banner and no Terms, because the site sets no cookies and collects no data (checked in the browser).
 - 2026-11-14 BallGameAI card uses a cropped screenshot of the ballgameai.com hero and links to the live site.
 - 2026-11-14 Every project card has an image (16:9). A neutral placeholder shows until the real image is added.
@@ -162,5 +165,4 @@ Ordered list of work. Mark items done as you go.
 - Any other projects to show besides BallGameAI? Is there a public link or screenshot for BallGameAI?
 - Do you want a profile photo in the hero? If yes, add it as `public/images/profile.jpg`.
 - Do you want privacy-friendly analytics later (for example Firebase/Google Analytics), knowing that some regions then require a cookie notice?
-- Do you want automatic deploys from GitHub (a GitHub Action that runs on push to `main`), or manual `firebase deploy` for now?
 - What is your Firebase project ID? (Needed for `.firebaserc`; it is not a secret. You can also run `firebase use --add` yourself.)
