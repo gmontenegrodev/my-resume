@@ -61,7 +61,7 @@ export const resume: Resume = {
   title: "Software Engineering & Applied AI Leader",
   focus: "From questions to working products",
   tagline:
-    "I build production software and help engineering teams adopt AI responsibly, with people still making the final decisions.",
+    "Every great product starts with a clear vision, and that vision is the first step to seeing the final product. I turn ideas into production software and help engineering teams adopt AI responsibly, with people still making the final decisions.",
   location: "Sunrise, FL",
   availability: "Open to engineering leadership and applied AI roles",
   email: "gmontenegro500@gmail.com",
