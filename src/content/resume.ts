@@ -24,7 +24,13 @@ export type Project = {
   tech: string[];
   codeUrl?: string;
   demoUrl?: string;
-  image?: string;
+  /**
+   * Screenshot or cover image. Put the file in public/images/projects/
+   * (16:9, e.g. 1600x900, .webp or .png) and use a path like
+   * "/images/projects/ballgameai.webp". `alt` describes what the image shows.
+   * Until it is set, the card shows a neutral placeholder.
+   */
+  image?: { src: string; alt: string };
 };
 
 export type SkillGroup = { group: string; items: string[] };
@@ -169,7 +175,7 @@ export const resume: Resume = {
         "MLB data ingestion and backend workflows covering players, teams, rosters, performance, matchups, and live-game context.",
       ],
       tech: ["Python", "FastAPI", "PostgreSQL", "REST APIs", "LLMs"],
-      // TODO: add codeUrl / demoUrl / image if you want to show them.
+      // TODO: add image (required for every project), and codeUrl / demoUrl if public.
     },
   ],
 

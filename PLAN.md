@@ -43,7 +43,7 @@ What we are building. The frontend and reviewer agents treat this file as the so
 | Hero | Answers "who is this and what do they do?" in under 10 seconds | Full name (H1), job title (e.g. "Software & AI Engineer"), a one-sentence value line, location and availability (e.g. "Open to remote roles"), optional photo | Primary button "Contact me" goes to `#contact`; secondary button "Download resume" goes to `/resume.pdf` |
 | About | Short personal summary | 2 or 3 short paragraphs: what I do, what I'm good at, what I'm looking for | none |
 | Experience | Show career history and results | One entry per job, newest first: role, company (with link), dates, location or remote, 2 to 4 bullet points focused on results (numbers where possible), tech tags | none |
-| Projects | Show real work | Featured project BallGameAI (status, role, description, highlights, tech) first; more cards later if I add them. Each card: title, one or two sentence description, my role, tech tags, links to "Code" (GitHub) and "Live demo" when available, optional screenshot | Each card links out (opens in a new tab) |
+| Projects | Show real work | Grid of project cards (2 columns on tablet and desktop, 1 on mobile), BallGameAI first. Every card has a 16:9 image at the top (screenshot or cover, in `public/images/projects/`), then: title, one or two sentence description, my role, tech tags, links to "Code" (GitHub) and "Live demo" when available | Each card links out (opens in a new tab) |
 | Skills | Let recruiters scan for keywords | Skills grouped, e.g. Languages, Frontend, Backend, AI / ML, Cloud & DevOps, Tools. Plain text tags, no progress bars or percentages | none |
 | Education & certifications | Formal background | Degree, school, years; certifications with issuer and year | none |
 | Contact | Turn interest into a conversation | Short line (e.g. "I'm open to new roles. The fastest way to reach me is email."), then buttons: Email, LinkedIn, GitHub | "Email me" button (`mailto:`) |
@@ -122,6 +122,8 @@ Ordered list of work. Mark items done as you go.
 - [ ] Add `public/resume.pdf` (me, then frontend links it)
 - [x] Add `firebase.json` and `.env.example`; document the deploy steps in README (main session)
 - [ ] Create `.firebaserc` with `firebase use --add` (me, needs my Firebase project)
+- [ ] Add more experience entries (me: send them; main session: add to `resume.ts`)
+- [ ] Add more projects, each with an image (me: send them; main session: add to `resume.ts` and `public/images/projects/`)
 - [ ] Code review (reviewer / Rita)
 - [ ] Security audit: dependencies, no secrets, safe external links (`rel="noopener noreferrer"`), security headers in `firebase.json` (security / Sam)
 - [ ] SEO review (seo / Peter)
@@ -142,6 +144,7 @@ Ordered list of work. Mark items done as you go.
 - 2026-11-13 Phone number is not shown on the site; email and LinkedIn are, because the CV already makes them public.
 - 2026-11-13 Custom domain is germanresume.com (currently the old site). Build and test the new site first; switch DNS to Firebase later.
 - 2026-11-13 The "Download resume" and GitHub buttons stay hidden until `resumePdf` and `links.github` are set in `src/content/resume.ts`.
+- 2026-11-14 Every project card has an image (16:9). A neutral placeholder shows until the real image is added.
 - 2026-11-13 Next.js app at the repo root (no `frontend/` folder), because there is no backend.
 
 **Open**
