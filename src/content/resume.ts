@@ -174,6 +174,18 @@ export const resume: Resume = {
       ],
       tech: ["React", "JavaScript", "HTML", "CSS", "Design Systems", "Graphic Design"],
     },
+    {
+      role: "Senior WordPress Developer",
+      company: "J.M. Field Marketing",
+      period: "2017",
+      location: "Fort Lauderdale, FL",
+      highlights: [
+        "Built and maintained custom WordPress themes and plugins, handling both front-end and back-end work.",
+        "Made sure sites worked smoothly across browsers and devices, and delivered on campaign deadlines.",
+        "Created landing pages and visual designs for marketing campaigns, with a focus on performance and user experience.",
+      ],
+      tech: ["WordPress", "PHP", "JavaScript", "jQuery", "HTML5", "SCSS", "Bootstrap", "AWS", "Git", "gulp"],
+    },
   ],
 
   projects: [

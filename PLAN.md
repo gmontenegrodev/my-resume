@@ -122,7 +122,7 @@ Ordered list of work. Mark items done as you go.
 - [ ] Add `public/resume.pdf` (me, then frontend links it)
 - [x] Add `firebase.json` and `.env.example`; document the deploy steps in README (main session)
 - [ ] Create `.firebaserc` with `firebase use --add` (me, needs my Firebase project)
-- [ ] Add more experience entries (me: send them; main session: add to `resume.ts`)
+- [x] Add more experience entries: Tambourine and J.M. Field Marketing (main session)
 - [ ] Add more projects, each with an image (me: send them; main session: add to `resume.ts` and `public/images/projects/`)
 - [ ] Code review (reviewer / Rita)
 - [ ] Security audit: dependencies, no secrets, safe external links (`rel="noopener noreferrer"`), security headers in `firebase.json` (security / Sam)
