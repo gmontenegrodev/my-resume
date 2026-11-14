@@ -44,6 +44,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body className="flex min-h-screen flex-col font-sans">
+        {/* Target for "Back to top" links. Not the sticky header: browsers don't scroll to sticky elements. */}
+        <div id="top" aria-hidden="true" />
         <a
           href="#main"
           className="sr-only z-50 rounded-md bg-primary px-4 py-2 font-semibold text-on-primary focus:not-sr-only focus:fixed focus:top-4 focus:left-4"

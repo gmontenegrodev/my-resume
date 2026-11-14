@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { resume } from "@/content/resume";
 
 export function Footer() {
@@ -26,6 +27,11 @@ export function Footer() {
               </a>
             </li>
           )}
+          <li>
+            <Link href="/privacy" className="inline-flex min-h-11 items-center hover:text-text">
+              Privacy
+            </Link>
+          </li>
           <li>
             <a href="#top" className="inline-flex min-h-11 items-center font-medium hover:text-text">
               Back to top ↑

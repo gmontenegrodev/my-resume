@@ -20,6 +20,7 @@ What we are building. The frontend and reviewer agents treat this file as the so
 - Contact by links only: email (`mailto:`), LinkedIn, GitHub.
 - SEO basics: page title and description, Open Graph image, JSON-LD `Person` data, `sitemap.xml`, `robots.txt`, favicon.
 - A custom 404 page.
+- A short privacy page (`/privacy`), linked from the footer.
 - A responsive layout (mobile first) and accessibility to WCAG 2.2 AA.
 - Static export (`next build` with `output: "export"`) deployed to Firebase Hosting.
 
@@ -30,7 +31,7 @@ What we are building. The frontend and reviewer agents treat this file as the so
 - No separate project detail pages (projects link out to GitHub or a live demo).
 - No dark mode or theme toggle.
 - No CMS or admin page. Content is edited in one TypeScript file.
-- No analytics or cookie banner (we can add them later; see open questions).
+- No analytics, cookie banner, or Terms and Conditions. The site sets no cookies and collects no data, so none are needed. If analytics, a form, or embeds are added later, update `/privacy` and add a consent banner for EU/UK visitors.
 - No multiple languages.
 
 ## 3. Pages and sections
@@ -48,6 +49,12 @@ What we are building. The frontend and reviewer agents treat this file as the so
 | Education & certifications | Formal background | Degree, school, years; certifications with issuer and year | none |
 | Contact | Turn interest into a conversation | Short line (e.g. "I'm open to new roles. The fastest way to reach me is email."), then buttons: Email, LinkedIn, GitHub | "Email me" button (`mailto:`) |
 | Footer | Close the page | © year and name, the same social links, a "Back to top" link | none |
+
+### Page `/privacy`
+
+| Section | Purpose | Content | Primary action |
+|---|---|---|---|
+| Privacy note | Be transparent about data | No cookies, analytics or tracking; Firebase Hosting server logs; how emails are used; links to other sites; changes; contact email. Text lives in `src/content/privacy.ts` | none (linked from the footer) |
 
 ### Page `/404`
 
@@ -144,6 +151,7 @@ Ordered list of work. Mark items done as you go.
 - 2026-11-13 Phone number is not shown on the site; email and LinkedIn are, because the CV already makes them public.
 - 2026-11-13 Custom domain is germanresume.com (currently the old site). Build and test the new site first; switch DNS to Firebase later.
 - 2026-11-13 The "Download resume" and GitHub buttons stay hidden until `resumePdf` and `links.github` are set in `src/content/resume.ts`.
+- 2026-11-14 Add a short privacy page; no cookie banner and no Terms, because the site sets no cookies and collects no data (checked in the browser).
 - 2026-11-14 BallGameAI card uses a cropped screenshot of the ballgameai.com hero and links to the live site.
 - 2026-11-14 Every project card has an image (16:9). A neutral placeholder shows until the real image is added.
 - 2026-11-13 Next.js app at the repo root (no `frontend/` folder), because there is no backend.

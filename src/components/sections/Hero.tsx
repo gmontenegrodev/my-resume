@@ -4,7 +4,7 @@ import { DownloadIcon, MapPinIcon } from "@/components/ui/icons";
 
 export function Hero() {
   return (
-    <section id="top" aria-labelledby="hero-heading" className="scroll-mt-16 bg-background">
+    <section aria-labelledby="hero-heading" className="bg-background">
       <div className="mx-auto max-w-5xl px-4 pt-16 pb-20 sm:px-6 sm:pt-24 sm:pb-28">
         <p className="text-sm font-semibold tracking-wide text-primary uppercase">
           {resume.focus}
