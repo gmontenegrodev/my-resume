@@ -74,9 +74,9 @@ export const resume: Resume = {
   },
 
   about: [
-    "I'm an engineering and applied AI leader with 10+ years of experience building production software, cloud platforms, APIs, and AI-assisted engineering workflows.",
-    "I lead cross-team AI tooling and adoption: I set engineering standards, mentor developers, run workshops, and turn new technology into practical day-to-day practices.",
-    "I'm also the founder of BallGameAI, an early-stage baseball decision-intelligence platform that explores how real-time game data, deterministic analytics, and AI can support evidence-based decisions in professional baseball. I'm continuing my education in generative AI and baseball scouting.",
+    "I'm a software engineer with 10+ years of experience, and what I love most is building products: taking an idea from a first question to something real people use every day. I've built production web apps, cloud platforms, and APIs with React, TypeScript, Python, and AWS.",
+    "Today I also lead AI tooling and adoption across engineering teams. I set standards, mentor developers, run workshops, and help teams use AI to build better products faster, while people keep the final decisions.",
+    "I'm also building my own product: BallGameAI, a baseball decision-intelligence platform that uses real-time game data, deterministic analytics, and AI to support evidence-based decisions in professional baseball. Along the way, I'm continuing my education in generative AI and baseball scouting.",
   ],
 
   skills: [
