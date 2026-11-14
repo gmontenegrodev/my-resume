@@ -156,9 +156,11 @@ export const resume: Resume = {
       companyUrl: "https://www.jazwares.com",
       period: "2019",
       highlights: [
-        "Delivered full-stack web solutions with AWS and API integrations for marketing and e-commerce platforms, from design and content through deployment and production support.",
+        "Delivered full-stack WordPress solutions with AWS hosting and API integrations for marketing and e-commerce sites, from design and content through deployment and production support.",
+        "Built custom WordPress themes and plugins, turning designs into responsive, reusable page templates that marketing teams could update on their own.",
+        "Connected WordPress sites to third-party services and internal APIs, and kept them fast, secure, and up to date in production.",
       ],
-      tech: ["JavaScript", "AWS", "REST APIs"],
+      tech: ["WordPress", "PHP", "JavaScript", "AWS", "REST APIs"],
     },
     {
       role: "Senior Frontend Developer / Graphic Designer",
