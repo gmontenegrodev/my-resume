@@ -160,6 +160,20 @@ export const resume: Resume = {
       ],
       tech: ["JavaScript", "AWS", "REST APIs"],
     },
+    {
+      role: "Senior Frontend Developer / Graphic Designer",
+      company: "Tambourine",
+      companyUrl: "https://www.tambourine.com",
+      period: "2017 – 2019",
+      location: "Sunrise, FL",
+      highlights: [
+        "Built fast, responsive, and accessible React web applications for hotel and resort clients.",
+        "Designed graphics, UI components, and digital assets that followed each client's brand guidelines, and worked with UX/UI designers to turn concepts into pixel-perfect interfaces.",
+        "Improved site speed and usability with techniques like lazy loading and efficient asset management.",
+        "Built and maintained a reusable component library (design system) to keep interfaces consistent across platforms.",
+      ],
+      tech: ["React", "JavaScript", "HTML", "CSS", "Design Systems", "Graphic Design"],
+    },
   ],
 
   projects: [
