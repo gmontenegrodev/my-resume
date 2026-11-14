@@ -1,0 +1,75 @@
+# Build, check, and deploy the site to Firebase Hosting.
+#
+# - Pull requests: lint, type check, and build (no deploy), so broken code
+#   is caught before it reaches main.
+# - Push / merge to main: the same checks, then deploy to the live site.
+#
+# One-time setup in GitHub (Settings > Secrets and variables > Actions):
+#   Secret   FIREBASE_SERVICE_ACCOUNT  JSON key of a Google Cloud service account
+#                                      with the "Firebase Hosting Admin" role
+#   Variable FIREBASE_PROJECT_ID       your Firebase project ID (not a secret)
+# See README.md, "Automatic deploys".
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: read
+
+# Never run two deploys at the same time; a newer push cancels an older run.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, type check, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      # Build first: it generates the route types that the type check needs.
+      - run: npm run build
+      - run: npm run typecheck
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: out
+          retention-days: 7
+
+  deploy:
+    name: Deploy to Firebase Hosting
+    needs: check
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://germanresume.com
+    steps:
+      - uses: actions/checkout@v4
+
+      # Deploy exactly the files that passed the checks.
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: out
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
+          channelId: live

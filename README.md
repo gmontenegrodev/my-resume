@@ -21,7 +21,7 @@ All text lives in **`src/content/resume.ts`**. Edit that file and the site updat
 | Preview the built site | `npm start` |
 | Lint | `npm run lint` |
 | Type check | `npm run typecheck` |
-| Build and deploy | `npm run deploy` |
+| Build and deploy by hand | `npm run deploy` |
 
 ## Deploy to Firebase Hosting (first time)
 
@@ -40,6 +40,29 @@ All text lives in **`src/content/resume.ts`**. Edit that file and the site updat
    ```
    The site is live at `https://<project-id>.web.app`.
 4. Custom domain: in the Firebase console, open **Hosting → Add custom domain**, enter `germanresume.com`, and add the DNS records it shows at your domain registrar. Do this only when you're ready to replace the old site, because changing DNS switches the domain over.
+
+## Automatic deploys (GitHub Actions)
+
+`.github/workflows/deploy.yml` runs on GitHub's servers:
+
+- **On every pull request:** lint, type check, and build. A red ✗ on the PR means something is broken.
+- **On every push or merge to `main`:** the same checks, then deploy to the live site.
+- **By hand:** GitHub → **Actions** → **Deploy** → **Run workflow**.
+
+### One-time setup
+
+1. **Create a service account** (a "robot" Google account that GitHub uses to deploy):
+   Google Cloud console → select your Firebase project → **IAM & Admin → Service Accounts → Create service account**.
+   Name it `github-deploy`, and give it the role **Firebase Hosting Admin**.
+   If the deploy later fails with a permission error, also add **API Keys Viewer** and **Service Account User**.
+2. **Create a key:** open the service account → **Keys → Add key → Create new key → JSON**. A `.json` file downloads.
+   Treat this file like a password. Never commit it, and delete it from your computer after step 3.
+3. **Add it to GitHub:** repository → **Settings → Secrets and variables → Actions**:
+   - **Secrets** tab → New repository secret → name `FIREBASE_SERVICE_ACCOUNT`, value: paste the whole JSON file.
+   - **Variables** tab → New repository variable → name `FIREBASE_PROJECT_ID`, value: your Firebase project ID.
+4. Push or merge anything to `main` and watch it run in the **Actions** tab.
+
+Shortcut: running `firebase init hosting:github` on your computer does steps 1 to 3 for you. If it asks to overwrite `.github/workflows/`, say **no** to keep this workflow, and rename the secret it creates to `FIREBASE_SERVICE_ACCOUNT` (or update the workflow to use its name).
 
 ## Configuration
 
