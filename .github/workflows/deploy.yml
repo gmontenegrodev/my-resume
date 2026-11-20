@@ -4,10 +4,15 @@
 #   is caught before it reaches main.
 # - Push / merge to main: the same checks, then deploy to the live site.
 #
-# One-time setup in GitHub (Settings > Secrets and variables > Actions):
-#   Secret   FIREBASE_SERVICE_ACCOUNT  JSON key of a Google Cloud service account
-#                                      with the "Firebase Hosting Admin" role
-#   Variable FIREBASE_PROJECT_ID       your Firebase project ID (not a secret)
+# Login to Google Cloud uses Workload Identity Federation (no key file):
+# Google Cloud trusts GitHub Actions runs from this repository's main branch
+# and lets them act as the deploy service account for a short time.
+#
+# One-time setup in GitHub (Settings > Secrets and variables > Actions > Variables).
+# None of these are secrets:
+#   GCP_WORKLOAD_IDENTITY_PROVIDER  projects/<number>/locations/global/workloadIdentityPools/github/providers/my-resume
+#   GCP_SERVICE_ACCOUNT             github-deploy-german-resume@german-resume.iam.gserviceaccount.com
+#   FIREBASE_PROJECT_ID             german-resume
 # See README.md, "Automatic deploys".
 
 name: Deploy
@@ -55,6 +60,9 @@ jobs:
     needs: check
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # lets this job ask GitHub for a login token for Google Cloud
     environment:
       name: production
       url: https://germanresume.com
@@ -67,9 +75,15 @@ jobs:
           name: site
           path: out
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: actions/setup-node@v4
         with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
-          channelId: live
+          node-version: 22
+
+      - name: Log in to Google Cloud (Workload Identity Federation)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - name: Deploy to Firebase Hosting (live)
+        run: npx --yes firebase-tools@latest deploy --only hosting --project "${{ vars.FIREBASE_PROJECT_ID }}" --non-interactive

@@ -51,18 +51,44 @@ All text lives in **`src/content/resume.ts`**. Edit that file and the site updat
 
 ### One-time setup
 
-1. **Create a service account** (a "robot" Google account that GitHub uses to deploy):
-   Google Cloud console → select your Firebase project → **IAM & Admin → Service Accounts → Create service account**.
-   Name it `github-deploy`, and give it the role **Firebase Hosting Admin**.
-   If the deploy later fails with a permission error, also add **API Keys Viewer** and **Service Account User**.
-2. **Create a key:** open the service account → **Keys → Add key → Create new key → JSON**. A `.json` file downloads.
-   Treat this file like a password. Never commit it, and delete it from your computer after step 3.
-3. **Add it to GitHub:** repository → **Settings → Secrets and variables → Actions**:
-   - **Secrets** tab → New repository secret → name `FIREBASE_SERVICE_ACCOUNT`, value: paste the whole JSON file.
-   - **Variables** tab → New repository variable → name `FIREBASE_PROJECT_ID`, value: your Firebase project ID.
-4. Push or merge anything to `main` and watch it run in the **Actions** tab.
+GitHub logs in to Google Cloud with **Workload Identity Federation**: no key file. Google Cloud trusts runs from this repository's `main` branch and lets them act as the deploy service account for a short time. (The shakochat.com organization blocks service account key files, which is a good security default.)
 
-Shortcut: running `firebase init hosting:github` on your computer does steps 1 to 3 for you. If it asks to overwrite `.github/workflows/`, say **no** to keep this workflow, and rename the secret it creates to `FIREBASE_SERVICE_ACCOUNT` (or update the workflow to use its name).
+1. **Service account** (already done): `github-deploy-german-resume@german-resume.iam.gserviceaccount.com` with the roles Firebase Hosting Admin, API Keys Viewer, Service Account User, Cloud Run Viewer.
+2. **Trust GitHub:** open [Cloud Shell](https://shell.cloud.google.com) (the `>_` button in the Google Cloud console) and run:
+   ```bash
+   PROJECT_ID=german-resume
+   REPO=gmontenegrodev/my-resume
+   SA=github-deploy-german-resume@${PROJECT_ID}.iam.gserviceaccount.com
+   PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format='value(projectNumber)')
+
+   gcloud services enable iamcredentials.googleapis.com sts.googleapis.com --project="$PROJECT_ID"
+
+   gcloud iam workload-identity-pools create github \
+     --project="$PROJECT_ID" --location=global --display-name="GitHub Actions"
+
+   gcloud iam workload-identity-pools providers create-oidc my-resume \
+     --project="$PROJECT_ID" --location=global --workload-identity-pool=github \
+     --display-name="my-resume repo" \
+     --issuer-uri="https://token.actions.githubusercontent.com" \
+     --attribute-mapping="google.subject=assertion.sub,attribute.repository=assertion.repository,attribute.ref=assertion.ref" \
+     --attribute-condition="assertion.repository=='${REPO}' && assertion.ref=='refs/heads/main'"
+
+   gcloud iam service-accounts add-iam-policy-binding "$SA" \
+     --project="$PROJECT_ID" --role=roles/iam.workloadIdentityUser \
+     --member="principalSet://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/github/attribute.repository/${REPO}"
+
+   echo "projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/github/providers/my-resume"
+   ```
+   The last line prints the provider name for the next step.
+3. **Add three repository variables** in GitHub → **Settings → Secrets and variables → Actions → Variables** (none of these are secrets):
+
+   | Name | Value |
+   |---|---|
+   | `GCP_WORKLOAD_IDENTITY_PROVIDER` | the line printed at the end of step 2 |
+   | `GCP_SERVICE_ACCOUNT` | `github-deploy-german-resume@german-resume.iam.gserviceaccount.com` |
+   | `FIREBASE_PROJECT_ID` | `german-resume` |
+
+4. Push or merge anything to `main` (or **Actions → Deploy → Run workflow**) and watch it run.
 
 ## Configuration
 
