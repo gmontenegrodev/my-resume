@@ -84,6 +84,7 @@ Used by the `design` skill. Fill this in before any UI work.
 - Muted text: #475569
 - Border: #E2E8F0
 - Accent or secondary (optional): none
+- Hero (dark, over the background video): background #0B1120, text #FFFFFF, muted text #CBD5E1, eyebrow/links #93C5FD. Keep at least 4.5:1 contrast for every frame of the video.
 
 ### Typography
 - Heading font: Inter (Google Fonts, loaded with `next/font/google`)
@@ -92,9 +93,9 @@ Used by the `design` skill. Fill this in before any UI work.
 ### Style
 - Overall feel: clean, minimal, professional
 - Corners: slightly rounded
-- Imagery: optional profile photo and real project screenshots
+- Imagery: hero background video (small humanoid robot, muted loop), optional profile photo, and real project screenshots
 - Reference sites we like: to be provided
-- Things to avoid: dark mode, gradients, stock photos, skill progress bars or percentages, heavy animations
+- Things to avoid: dark mode, gradients, stock photos, skill progress bars or percentages, heavy animations. Exceptions: the hero background video (stock clip) and its dark overlay gradient, which keeps the hero text readable. The video must stay pausable and must not autoplay for visitors who prefer reduced motion.
 
 ### Voice
 - Tone: direct and practical, first person, no jargon
@@ -105,3 +106,4 @@ Used by the `design` skill. Fill this in before any UI work.
 - Logo: none (name in text)
 - Favicon: `src/app/icon.svg` ("GM" monogram)
 - Photos: to be provided (`public/images/profile.jpg`, optional)
+- Hero video: `public/videos/hero.webm`, `hero.mp4` (720p, about 1 MB each, 20 s seamless loop) and `hero-poster.webp`
