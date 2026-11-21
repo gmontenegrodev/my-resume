@@ -15,6 +15,12 @@
   --color-muted: #475569;
   --color-border: #e2e8f0;
 
+  /* Hero over the background video (dark). */
+  --color-hero: #0b1120;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #cbd5e1;
+  --color-primary-on-dark: #93c5fd;
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 

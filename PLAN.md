@@ -41,7 +41,7 @@ What we are building. The frontend and reviewer agents treat this file as the so
 | Section | Purpose | Content | Primary action |
 |---|---|---|---|
 | Header (sticky) | Fast navigation on a long page | Name or initials (links to top), anchor links: About, Experience, Projects, Skills, Contact | "Contact me" link, goes to `#contact` |
-| Hero | Answers "who is this and what do they do?" in under 10 seconds | Full name (H1), job title (e.g. "Software & AI Engineer"), a one-sentence value line, location and availability (e.g. "Open to remote roles"), optional photo | Primary button "Contact me" goes to `#contact`; secondary button "Download resume" goes to `/resume.pdf` |
+| Hero | Answers "who is this and what do they do?" in under 10 seconds | Full name (H1), job title (e.g. "Software & AI Engineer"), a one-sentence value line, location and availability (e.g. "Open to remote roles"), muted looping background video (robot) with a dark overlay and a pause button | Primary button "Contact me" goes to `#contact`; secondary button "Download resume" goes to `/resume.pdf` |
 | About | Short personal summary | 2 or 3 short paragraphs: what I do, what I'm good at, what I'm looking for | none |
 | Experience | Show career history and results | One entry per job, newest first: role, company (with link), dates, location or remote, 2 to 4 bullet points focused on results (numbers where possible), tech tags | none |
 | Projects | Show real work | Grid of project cards (2 columns on tablet and desktop, 1 on mobile), BallGameAI first. Every card has a 16:9 image at the top (screenshot or cover, in `public/images/projects/`), then: title, one or two sentence description, my role, tech tags, links to "Code" (GitHub) and "Visit website" when available | Each card links out (opens in a new tab) |
@@ -155,6 +155,7 @@ Ordered list of work. Mark items done as you go.
 - 2026-11-13 Phone number is not shown on the site; email and LinkedIn are, because the CV already makes them public.
 - 2026-11-13 Custom domain is germanresume.com (currently the old site). Build and test the new site first; switch DNS to Firebase later.
 - 2026-11-13 The "Download resume" and GitHub buttons stay hidden until `resumePdf` and `links.github` are set in `src/content/resume.ts`.
+- 2026-11-21 Hero gets a background video (robot, 20 s seamless loop, 720p WebM + MP4 about 1 MB each). It doesn't autoplay for reduced-motion visitors and has a pause button (WCAG 2.2.2). Text contrast was measured over every second of the loop at 375 to 1920 px.
 - 2026-11-20 GitHub logs in to Google Cloud with Workload Identity Federation (no key file). The shakochat.com organization blocks service account keys, and key-free login is safer anyway. Only runs from this repo's `main` branch are trusted.
 - 2026-11-14 Deploy automatically with GitHub Actions on every push to `main`. Pull requests run lint, type check, and build only.
 - 2026-11-14 Add a short privacy page; no cookie banner and no Terms, because the site sets no cookies and collects no data (checked in the browser).

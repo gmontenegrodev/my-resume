@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "secondary" | "secondaryOnDark";
 
 type ButtonLinkProps = {
   href: string;
@@ -16,6 +16,8 @@ const styles: Record<Variant, string> = {
     "bg-primary text-on-primary hover:bg-primary-hover active:bg-primary-hover",
   secondary:
     "border border-border bg-background text-text hover:border-muted hover:bg-surface",
+  secondaryOnDark:
+    "border border-on-dark/40 text-on-dark hover:border-on-dark hover:bg-on-dark/10",
 };
 
 // A link styled as a button. Uses <a> because every target here is an
