@@ -47,6 +47,8 @@ export type Resume = {
   email: string;
   /** Path to the downloadable CV in public/, e.g. "/resume.pdf". Leave undefined to hide the button. */
   resumePdf?: string;
+  /** Muted, looping background video for the hero. Files live in public/videos/. */
+  heroVideo?: { webm: string; mp4: string; poster: string };
   links: { linkedin: string; github?: string };
   about: string[];
   skills: SkillGroup[];
@@ -67,6 +69,11 @@ export const resume: Resume = {
   email: "gmontenegro500@gmail.com",
   // TODO: add public/resume.pdf, then set this to "/resume.pdf".
   resumePdf: undefined,
+  heroVideo: {
+    webm: "/videos/hero.webm",
+    mp4: "/videos/hero.mp4",
+    poster: "/videos/hero-poster.webp",
+  },
   links: {
     linkedin: "https://www.linkedin.com/in/german-montenegro-engineer",
     // TODO: add GitHub profile URL, or remove this line to hide the link.
